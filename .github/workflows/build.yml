@@ -17,6 +17,7 @@ jobs:
                      -scheme Vibe \
                      -configuration Release \
                      -sdk iphoneos \
+                     CONFIGURATION_BUILD_DIR=$PWD/build \
                      CODE_SIGNING_ALLOWED=NO \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGN_IDENTITY="" \
@@ -25,7 +26,7 @@ jobs:
       - name: Package IPA
         run: |
           mkdir -p build/Payload
-          mv build/Release-iphoneos/Vibe.app build/Payload/
+          mv build/Vibe.app build/Payload/
           cd build && zip -r Vibe.ipa Payload
 
       - name: Upload Artifact
